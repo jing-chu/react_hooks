@@ -1,0 +1,91 @@
+.app {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+/*COLLECTIONS*/
+.collectionsInfo {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: auto;
+    padding: 10px;
+}
+
+.collection-card {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.collection-detail{
+    padding: 70px 10px;
+    width: 500px;   
+}
+
+.collection-select:hover{
+    color:red;
+    cursor: pointer;
+}
+
+.collection-select{
+text-decoration: underline;
+}
+
+.collection-img:hover{
+    cursor: pointer; 
+}
+
+
+
+/*ASSETS*/
+.assetsInfo{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: auto;
+    padding: 10px;
+}
+
+.sortForm{
+    position: relative;    
+    margin: 40px 10px;
+    
+}
+
+.sort-label{
+    font-size: large;
+}
+
+.sort-select{
+    cursor: pointer;
+}
+
+.asset-card{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    color: #ffffff;
+    background-color: rgb(42, 84, 104);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 10px 10px 25px -16px rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    width: 40vw;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.asset-detail{
+    margin-left: 10px;
+    margin-top: 0;
+}
+
+button {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+
+
