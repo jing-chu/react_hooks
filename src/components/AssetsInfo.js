@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import "../styles.css"
 import { faThumbtack } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -66,70 +66,54 @@ export default class AssetsInfo extends React.Component {
   }
 }
 
-export class SortForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: 'name' };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+export const SortForm = (props) => {
+  const [value, setValue] = useState('name')
+
+  const handleChange = (e) => {
+    setValue(e.target.value)
+ }
+
+  const handleSubmit = (e) => {
+    props.setSortAssets(value)
+    e.preventDefault();
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <label className="sort-label">
+        Sort by:
+      <select className="sort-select" value={value} onChange={handleChange}>
+          <option value="name">Name</option>
+          <option value="id">Id</option>
+        </select>
+      </label>
+      <input type="submit" value="Sort" />
+    </form>
+  );
 
-  handleSubmit(event) {
-    this.props.setSortAssets(this.state.value)
-    event.preventDefault();
-  }
-
-  render() {
-   
-    
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label className="sort-label">
-          Sort by:
-        <select className="sort-select" value={this.state.value} onChange={this.handleChange}>
-            <option value="name">Name</option>
-            <option value="id">Id</option>
-          </select>
-        </label>
-        <input type="submit" value="Sort" />
-      </form>
-    );
-  }
 }
 
-export class AssetCard extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  handleClick(e) {
+export const AssetCard = (props) => {
+  const handleClick = (e) => {
     e.preventDefault()
-    this.props.setMasterId(this.props.collectionId, this.props.ID)
+    props.setMasterId(props.collectionId, props.ID)
   }
 
-
-  render() {
-    return (
-      <div className="asset-card">
-        <img src={this.props.path} alt={this.props.name} width="150" height="150" />
-        <div className="asset-detail">
-          <p>Name: {this.props.name}</p>
-          <p>ID: {this.props.ID}</p>
-          {
-            (this.props.ID === this.props.masterId) ?
-              <FontAwesomeIcon icon={faThumbtack} size="2x" />
-              : <button className="master" onClick={this.handleClick}>
-                Set Master
-                </button>
-          }
-        </div>
+  return (
+    <div className="asset-card">
+      <img src={props.path} alt={props.name} width="150" height="150" />
+      <div className="asset-detail">
+        <p>Name: {props.name}</p>
+        <p>ID: {props.ID}</p>
+        {
+          (this.props.ID === props.masterId) ?
+            <FontAwesomeIcon icon={faThumbtack} size="2x" />
+            : <button className="master" onClick={handleClick}>
+              Set Master
+              </button>
+        }
       </div>
+    </div>
+  )
 
-    )
-  }
 }
