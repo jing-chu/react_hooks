@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import "../styles.css"
 import { faThumbtack } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+//import useSortForm from "./useSortForm"
 
 export default class AssetsInfo extends React.Component {
   constructor(props) {
@@ -66,12 +66,12 @@ export default class AssetsInfo extends React.Component {
   }
 }
 
-export const SortForm = (props) => {
+export const SortForm = props => {
   const [value, setValue] = useState('name')
 
   const handleChange = (e) => {
     setValue(e.target.value)
- }
+  }
 
   const handleSubmit = (e) => {
     props.setSortAssets(value)
@@ -93,7 +93,7 @@ export const SortForm = (props) => {
 
 }
 
-export const AssetCard = (props) => {
+export const AssetCard = props => {
   const handleClick = (e) => {
     e.preventDefault()
     props.setMasterId(props.collectionId, props.ID)
@@ -106,7 +106,7 @@ export const AssetCard = (props) => {
         <p>Name: {props.name}</p>
         <p>ID: {props.ID}</p>
         {
-          (this.props.ID === props.masterId) ?
+          (props.ID === props.masterId) ?
             <FontAwesomeIcon icon={faThumbtack} size="2x" />
             : <button className="master" onClick={handleClick}>
               Set Master
