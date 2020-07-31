@@ -17,7 +17,7 @@ export default function useSortForm (initialData) {
                 return 0;
             }
         }   
-    setData(data.sort(compare_fun)) 
+    setData([...data.sort(compare_fun)]) 
   } 
 
   return [data, setSortAssets]   
